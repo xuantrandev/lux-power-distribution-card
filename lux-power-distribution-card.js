@@ -287,7 +287,7 @@ class LuxPowerDistributionCard extends HTMLElement {
         solar_info_element.innerHTML = `
           <div>
           <p class="header-text">${this.formatPowerStates("pv_power", pv_power, index)}</p>
-          <p class="sub-text">${pv_power > 0 ? "PV Power" : ""}</p>
+          <p class="sub-text">${pv_power > 0 ? "Công suất PV" : ""}</p>
           </div>
         `;
       } else {
@@ -328,7 +328,7 @@ class LuxPowerDistributionCard extends HTMLElement {
       battery_charge_info_element.innerHTML = `
         <div>
           <p class="header-text">${this.formatPowerStates("battery_flow", battery_flow, index)}</p>
-          <p class="sub-text">${battery_flow > 0 ? "Charge Power" : battery_flow < 0 ? "Discharge Power" : "Idle"}</p>
+          <p class="sub-text">${battery_flow > 0 ? "Công suất sạc" : battery_flow < 0 ? "Công suất xả" : "Idle"}</p>
         </div>
       `;
     }
@@ -431,11 +431,11 @@ class LuxPowerDistributionCard extends HTMLElement {
     // Info
     const home_info_element = this.shadowRoot.querySelector("#home-info");
     if (home_info_element) {
-      var sub_text = "Home Usage";
+      var sub_text = "Tải sử dụng";
       var value = this.formatPowerStates("home_consumption", home_consumption, index);
 
       if (this._config.backup_power.is_used && home_consumption == 0 && backup_power > 0) {
-        sub_text = "Backup Power";
+        sub_text = "Công suất dự phòng";
         value = this.formatPowerStates("backup_power", backup_power, index);
       }
 
@@ -542,7 +542,7 @@ class LuxPowerDistributionCard extends HTMLElement {
         power_allocation_info_element.innerHTML = `
           <div>
           <p class="header-text">${parseInt(this.getAllocatedPower())} W</p>
-            <p class="sub-text">Allocated Power</p>
+            <p class="sub-text">Allocated Công Suất</p>
           </div>
         `;
       }
